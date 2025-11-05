@@ -1,0 +1,28 @@
+[package]
+name = "zipgraph-optimizer"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+documentation.workspace = true
+description = "Query optimization and learned indexes for ZipGraph"
+keywords.workspace = true
+categories.workspace = true
+
+[dependencies]
+# Internal dependencies
+zipgraph-core = { path = "../zipgraph-core" }
+zipgraph-ml = { path = "../zipgraph-ml" }
+
+# Workspace dependencies
+serde = { workspace = true }
+serde_json = { workspace = true }
+dashmap = { workspace = true }
+ahash = { workspace = true }
+parking_lot = { workspace = true }
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+
+[dev-dependencies]
+criterion = { workspace = true }
