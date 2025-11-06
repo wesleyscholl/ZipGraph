@@ -1,0 +1,33 @@
+[package]
+name = "zipgraph-bench"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+documentation.workspace = true
+description = "Performance benchmarks for ZipGraph"
+keywords.workspace = true
+categories.workspace = true
+
+[dependencies]
+# Internal dependencies
+zipgraph-core = { path = "../zipgraph-core" }
+zipgraph-ml = { path = "../zipgraph-ml" }
+zipgraph-optimizer = { path = "../zipgraph-optimizer" }
+
+# Workspace dependencies
+criterion = { workspace = true, features = ["html_reports"] }
+rand = { workspace = true }
+
+[[bench]]
+name = "graph_operations"
+harness = false
+
+[[bench]]
+name = "algorithm_comparison"
+harness = false
+
+[[bench]]
+name = "ml_performance"
+harness = false

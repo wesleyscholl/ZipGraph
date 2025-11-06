@@ -2,7 +2,6 @@
 
 use crate::error::{GraphError, Result};
 use crate::types::{FeatureVector, NodeId, Weight};
-use ahash::AHashMap;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
@@ -64,9 +63,9 @@ impl Edge {
 /// Main graph structure using adjacency list representation
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Graph {
-    nodes: AHashMap<NodeId, Node>,
+    nodes: HashMap<NodeId, Node>,
     /// Adjacency list: node_id -> Vec<(neighbor_id, edge_index)>
-    adjacency: AHashMap<NodeId, Vec<(NodeId, usize)>>,
+    adjacency: HashMap<NodeId, Vec<(NodeId, usize)>>,
     edges: Vec<Edge>,
     is_directed: bool,
     next_node_id: NodeId,
@@ -81,8 +80,8 @@ impl Graph {
     /// Create a new graph with preallocated capacity
     pub fn with_capacity(node_capacity: usize, edge_capacity: usize) -> Self {
         Self {
-            nodes: AHashMap::with_capacity(node_capacity),
-            adjacency: AHashMap::with_capacity(node_capacity),
+            nodes: HashMap::with_capacity(node_capacity),
+            adjacency: HashMap::with_capacity(node_capacity),
             edges: Vec::with_capacity(edge_capacity),
             is_directed: false,
             next_node_id: 0,
@@ -177,11 +176,7 @@ impl Graph {
 
     /// Get number of edges
     pub fn edge_count(&self) -> usize {
-        if self.is_directed {
-            self.edges.len()
-        } else {
-            self.edges.len() / 2
-        }
+        self.edges.len()
     }
 
     /// Check if graph is directed

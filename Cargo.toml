@@ -7,6 +7,34 @@ members = [
     "zipgraph-bench",
 ]
 
+[package]
+name = "zipgraph"
+version = "0.1.0"
+edition = "2021"
+authors = ["Wesley Scholl"]
+license = "MIT"
+
+[dependencies]
+zipgraph-core = { path = "./zipgraph-core" }
+zipgraph-ml = { path = "./zipgraph-ml" }
+zipgraph-optimizer = { path = "./zipgraph-optimizer" }
+
+[[example]]
+name = "basic_usage"
+path = "examples/basic_usage.rs"
+
+[[example]]
+name = "recommendation_engine"
+path = "examples/recommendation_engine.rs"
+
+[[example]]
+name = "fraud_detection"
+path = "examples/fraud_detection.rs"
+
+[[example]]
+name = "social_network"
+path = "examples/social_network.rs"
+
 [workspace.package]
 version = "0.1.0"
 edition = "2021"
@@ -21,12 +49,12 @@ categories = ["algorithms", "data-structures", "science", "mathematics"]
 [workspace.dependencies]
 # Core graph processing
 petgraph = "0.6"
-ndarray = "0.15"
+ndarray = { version = "0.15", features = ["serde"] }
 ndarray-linalg = "0.16"
 
-# ML and scientific computing
-candle-core = "0.7"
-candle-nn = "0.7"
+# ML and scientific computing (optional features for now)
+# candle-core = "0.7"
+# candle-nn = "0.7"
 tract-core = "0.21"
 tract-onnx = "0.21"
 

@@ -1,7 +1,6 @@
 //! Graph statistics and analysis
 
 use crate::graph::Graph;
-use crate::types::NodeId;
 use serde::{Deserialize, Serialize};
 
 /// Graph statistics used for ML features

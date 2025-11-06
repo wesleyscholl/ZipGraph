@@ -1,7 +1,6 @@
 //! ML-based algorithm selection
 
 use crate::error::{MlError, Result};
-use crate::features::FeatureExtractor;
 use zipgraph_core::{Algorithm, Graph, GraphStats};
 
 /// ML model for selecting the best algorithm for a graph
@@ -36,7 +35,7 @@ impl AlgorithmSelector {
     }
 
     /// Select algorithm for shortest path query
-    pub fn select_shortest_path(&self, graph: &Graph, start: usize, goal: usize) -> Algorithm {
+    pub fn select_shortest_path(&self, graph: &Graph, _start: usize, _goal: usize) -> Algorithm {
         let stats = GraphStats::from_graph(graph);
         
         // Heuristic: use BFS for unweighted, Dijkstra for weighted
