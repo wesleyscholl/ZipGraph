@@ -28,10 +28,12 @@ pub mod algorithms;
 pub mod centrality;
 pub mod error;
 pub mod graph;
+pub mod metrics;
 pub mod parallel;
 pub mod stats;
 pub mod storage;
 pub mod types;
+pub mod ultra;
 
 // Re-exports for convenience
 pub use error::{GraphError, Result};

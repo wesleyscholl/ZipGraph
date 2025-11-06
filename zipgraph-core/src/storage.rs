@@ -211,21 +211,26 @@ fn read_graphml<R: Read>(reader: &mut R) -> Result<SerializableGraph> {
         let end = content[start..].find("</node>").unwrap_or(0) + start;
         let node_xml = &content[start..end];
 
-        // Extract node id
-        if let Some(id_start) = node_xml.find(r#"id="n"#) {
-            let id_str = &node_xml[id_start + 6..];
-            let id_end = id_str.find('"').unwrap_or(0);
-            if let Ok(id) = id_str[..id_end].parse::<NodeId>() {
-                // Extract label
-                let label = if let Some(label_start) = node_xml.find("<data key=\"label\">") {
-                    let label_str = &node_xml[label_start + 18..];
-                    let label_end = label_str.find("</data>").unwrap_or(0);
-                    unescape_xml(&label_str[..label_end])
-                } else {
-                    format!("Node{}", id)
-                };
+        // Extract node id - look for id="nXXX"
+        if let Some(id_start) = node_xml.find(r#"id=""#) {
+            let id_str = &node_xml[id_start + 4..]; // Skip 'id="'
+            if let Some(id_end) = id_str.find('"') {
+                let id_with_n = &id_str[..id_end]; // This will be "nXXX"
+                // Remove the 'n' prefix and parse the number
+                if id_with_n.starts_with('n') {
+                    if let Ok(id) = id_with_n[1..].parse::<NodeId>() {
+                        // Extract label
+                        let label = if let Some(label_start) = node_xml.find("<data key=\"label\">") {
+                            let label_str = &node_xml[label_start + 18..];
+                            let label_end = label_str.find("</data>").unwrap_or(0);
+                            unescape_xml(&label_str[..label_end])
+                        } else {
+                            format!("Node{}", id)
+                        };
 
-                nodes.push((id, Node::new(id, label)));
+                        nodes.push((id, Node::new(id, label)));
+                    }
+                }
             }
         }
     }
@@ -236,19 +241,36 @@ fn read_graphml<R: Read>(reader: &mut R) -> Result<SerializableGraph> {
         let end = content[start..].find("</edge>").unwrap_or(0) + start;
         let edge_xml = &content[start..end];
 
-        // Extract source and target
-        let source = if let Some(src_start) = edge_xml.find(r#"source="n"#) {
-            let src_str = &edge_xml[src_start + 10..];
-            let src_end = src_str.find('"').unwrap_or(0);
-            src_str[..src_end].parse::<NodeId>().unwrap_or(0)
+        // Extract source - look for source="nXXX"
+        let source = if let Some(src_start) = edge_xml.find(r#"source=""#) {
+            let src_str = &edge_xml[src_start + 8..]; // Skip 'source="'
+            if let Some(src_end) = src_str.find('"') {
+                let src_with_n = &src_str[..src_end];
+                if src_with_n.starts_with('n') {
+                    src_with_n[1..].parse::<NodeId>().unwrap_or(0)
+                } else {
+                    0
+                }
+            } else {
+                0
+            }
         } else {
             0
         };
 
-        let target = if let Some(tgt_start) = edge_xml.find(r#"target="n"#) {
-            let tgt_str = &edge_xml[tgt_start + 10..];
-            let tgt_end = tgt_str.find('"').unwrap_or(0);
-            tgt_str[..tgt_end].parse::<NodeId>().unwrap_or(0)
+        // Extract target - look for target="nXXX"
+        let target = if let Some(tgt_start) = edge_xml.find(r#"target=""#) {
+            let tgt_str = &edge_xml[tgt_start + 8..]; // Skip 'target="'
+            if let Some(tgt_end) = tgt_str.find('"') {
+                let tgt_with_n = &tgt_str[..tgt_end];
+                if tgt_with_n.starts_with('n') {
+                    tgt_with_n[1..].parse::<NodeId>().unwrap_or(0)
+                } else {
+                    0
+                }
+            } else {
+                0
+            }
         } else {
             0
         };
