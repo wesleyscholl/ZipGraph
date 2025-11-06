@@ -5,6 +5,10 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Rust](https://img.shields.io/badge/rust-1.75%2B-orange.svg)](https://www.rust-lang.org/)
 
+## 📺 Demo
+![ZipGraphDemo1](https://github.com/user-attachments/assets/b4baa73c-09a2-40c1-b454-ccd8fb91365a)
+
+
 ## 🎯 Overview
 
 ZipGraph combines blazing-fast Rust performance with machine learning intelligence to optimize graph processing workloads. It's a self-tuning graph engine that learns optimal strategies for your specific use cases.
