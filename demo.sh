@@ -78,6 +78,6 @@ echo "╚═══════════════════════�
 echo -e "${NC}"
 echo ""
 
-echo -e "${YELLOW}📹 Recording tip:${NC} Use 'asciinema' or screen recording software"
-echo -e "${YELLOW}   This demo runs in ~30 seconds - perfect for showcasing!${NC}"
-echo ""
+# echo -e "${YELLOW}📹 Recording tip:${NC} Use 'asciinema' or screen recording software"
+# echo -e "${YELLOW}   This demo runs in ~30 seconds - perfect for showcasing!${NC}"
+# echo ""
