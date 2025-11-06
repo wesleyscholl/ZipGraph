@@ -24,6 +24,9 @@ pub enum GraphError {
 
     #[error("Invalid parameter: {0}")]
     InvalidParameter(String),
+
+    #[error("Invalid data: {0}")]
+    InvalidData(String),
 }
 
 pub type Result<T> = std::result::Result<T, GraphError>;

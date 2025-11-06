@@ -85,6 +85,7 @@ tracing-subscriber = "0.3"
 # Testing and benchmarking
 criterion = "0.5"
 proptest = "1.5"
+tempfile = "3.8"
 
 [profile.release]
 opt-level = 3

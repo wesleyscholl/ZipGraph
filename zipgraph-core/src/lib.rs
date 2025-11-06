@@ -30,12 +30,14 @@ pub mod error;
 pub mod graph;
 pub mod parallel;
 pub mod stats;
+pub mod storage;
 pub mod types;
 
 // Re-exports for convenience
 pub use error::{GraphError, Result};
 pub use graph::{Edge, Graph, Node};
 pub use stats::GraphStats;
+pub use storage::{load_graph, save_graph, StorageFormat};
 pub use types::NodeId;
 
 /// Algorithm selection enum
