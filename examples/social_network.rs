@@ -99,7 +99,7 @@ fn main() {
                 }
                 println!(" ({} hops)", path.len() - 1);
             }
-            Err(e) => println!("  {} → {}: No path found", from_name, to_name),
+            Err(_) => println!("  {} → {}: No path found", from_name, to_name),
         }
     }
 

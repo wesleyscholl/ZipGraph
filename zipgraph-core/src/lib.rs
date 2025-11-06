@@ -13,18 +13,22 @@
 //! ## Quick Start
 //!
 //! ```rust
-//! use zipgraph_core::{Graph, Algorithm};
+//! use zipgraph_core::Graph;
 //!
 //! let mut graph = Graph::new();
-//! graph.add_edge(0, 1, 1.0);
-//! graph.add_edge(1, 2, 2.0);
+//! graph.add_node_simple("A");
+//! graph.add_node_simple("B");
+//! graph.add_edge(0, 1, 1.0).unwrap();
 //!
-//! let path = graph.shortest_path(0, 2, Algorithm::Dijkstra);
+//! assert_eq!(graph.node_count(), 2);
+//! assert_eq!(graph.edge_count(), 1);
 //! ```
 
 pub mod algorithms;
+pub mod centrality;
 pub mod error;
 pub mod graph;
+pub mod parallel;
 pub mod stats;
 pub mod types;
 

@@ -1,0 +1,29 @@
+# Test Coverage Configuration for Tarpaulin
+
+[package.metadata.tarpaulin]
+# Run with: cargo tarpaulin --out Html --output-dir coverage
+
+# Minimum coverage threshold (80%)
+fail-under = 80
+
+# Exclude files from coverage
+exclude = [
+    "*/tests/*",
+    "*/benches/*",
+    "*/examples/*",
+]
+
+# Include all workspace members
+workspace = true
+
+# Generate multiple output formats
+output-formats = ["Html", "Lcov"]
+
+# Verbose output
+verbose = true
+
+# Follow symbolic links
+follow-links = true
+
+# Count tests as covered
+count-tests = false
