@@ -1,0 +1,20 @@
+# Tell GitHub this is a Rust project
+*.rs linguist-language=Rust
+*.toml linguist-language=TOML
+
+# Mark generated/vendor files
+target/ linguist-generated=true
+Cargo.lock linguist-generated=true
+
+# Documentation and coverage reports (if accidentally committed)
+*.html linguist-documentation=true
+coverage/ linguist-generated=true
+
+# Test files
+**/tests/** linguist-language=Rust
+**/benches/** linguist-language=Rust
+**/examples/** linguist-language=Rust
+
+# Exclude from stats
+*.md linguist-documentation=true
+LICENSE linguist-documentation=true
