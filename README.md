@@ -1,5 +1,7 @@
 # ⚡ ZipGraph
 
+**Status**: High-performance graph processing engine with ML-powered optimization - production-ready Rust library for complex network analysis.
+
 **Zip through complex graphs** - An intelligent, ML-powered graph processing engine in Rust.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
