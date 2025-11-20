@@ -22,7 +22,7 @@ This guide will help you create a compelling video demonstration of ZipGraph's p
 The fastest way to demonstrate performance:
 
 ```bash
-./demo.sh
+./scripts/demo.sh
 ```
 
 This automated script shows:

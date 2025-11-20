@@ -3,7 +3,7 @@
 ## 🎬 Quick Start
 
 ```bash
-./demo.sh
+./scripts/demo.sh
 ```
 
 **Duration:** ~30 seconds  

@@ -3,7 +3,7 @@
 ## 🚀 30-Second Demo
 
 ```bash
-./demo.sh
+./scripts/demo.sh
 ```
 
 **Proves:**
